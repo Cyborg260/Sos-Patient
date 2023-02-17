@@ -8,7 +8,6 @@ import GetStartedBtn from '../components/getStartedBtn'
 const SliderScreen = () => {
     //============== useState ==============//
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-    const [scrollingRightSideAmount, setScrollingRightSideAmount] = useState(0);
     const [show, setShow] = useState(false)
     //============== useEffect =============//
     useEffect(() => {
@@ -90,14 +89,15 @@ const SliderScreen = () => {
                 scrollEnabled={false}
                 keyExtractor={(item) => item.id}
                 initialScrollIndex={0}
+                scrollEventThrottle={0}
                 onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollx } } }], {
                     useNativeDriver: false,
                 },
                 )}
-                //  onScroll={e => {
-                //       setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
-                //       slidesRef2.current.scrollToOffset({offset:e.nativeEvent.contentOffset.x,animated:true});
-                //   }}
+                // onScroll={e => {
+                //     setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
+                //     slidesRef2.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
+                // }}
                 onViewableItemsChanged={viewableItemsChanged1}
                 viewabilityConfig={viewconfig1}
             />
@@ -130,6 +130,7 @@ const SliderScreen = () => {
                         scrollEnabled={false}
                         showsHorizontalScrollIndicator={false}
                         initialScrollIndex={0}
+                        scrollEventThrottle={0}
                         viewabilityConfig={viewconfig1}
                         onViewableItemsChanged={viewableItemsChanged1}
                     />

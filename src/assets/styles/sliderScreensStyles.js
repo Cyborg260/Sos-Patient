@@ -42,19 +42,19 @@ export default StyleSheet.create({
         marginTop: 80,
     },
     MainTxt: {
-        fontSize: 24,
+        fontSize: 26,
         color: "#fff",
         fontFamily: FONT_FAMILY.MontserratBold,
         width: width,
         textAlign: "center"
     },
     detailTxt: {
-        fontSize: 14,
+        fontSize: 15,
         color: "#FEFEFE",
         fontWeight: "400",
         fontFamily: FONT_FAMILY.MontserratMedium,
         textAlign: "center",
-        marginTop: 25,
+        marginTop: 20,
         width: width
     },
     footerView1: {

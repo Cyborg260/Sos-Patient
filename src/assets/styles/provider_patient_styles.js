@@ -137,7 +137,7 @@ export default StyleSheet.create({
         backgroundColor: "#fff",
         alignSelf: "center",
         position: "absolute",
-        top: 420,
+        top: 425,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 60,
