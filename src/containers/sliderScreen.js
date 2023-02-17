@@ -1,16 +1,20 @@
-import { View, Text, SafeAreaView, Image, TouchableOpacity, FlatList, Animated, Dimensions, ScrollView } from 'react-native'
-import React, { useRef, useState } from 'react'
+import { View, Text, SafeAreaView, Image, TouchableOpacity, FlatList, Animated, Dimensions, ScrollView, StatusBar, BackHandler } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from '../assets/styles/sliderScreensStyles'
 import { useNavigation } from '@react-navigation/native'
 import { sliderData } from '../utils/Data/sliderData'
 import NextBtn from '../components/nextBtn'
 import GetStartedBtn from '../components/getStartedBtn'
 const SliderScreen = () => {
-    //useState
+    //============== useState ==============//
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [show, setShow] = useState(false)
+    //============== useEffect =============//
+    useEffect(() => {
+        BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+    }, [])
     const navigation = useNavigation();
-    const { width, height } = Dimensions.get('window');
+    const { width, height } = Dimensions.get('screen');
     const per = (currentSlideIndex + 1) * (100 / sliderData.length);
     const scrollx = useRef(new Animated.Value(0)).current;
     const slidesRef1 = useRef(null);
@@ -40,7 +44,6 @@ const SliderScreen = () => {
             console.log("last Item");
         }
     };
-
     const sliderItems = ({ item }) => (
         <Items
             dotsImage={item.dotsImage} docImage={item.docImage} txt={item.txt} id={item.id}
@@ -63,11 +66,16 @@ const SliderScreen = () => {
             <Text style={styles.detailTxt}>{detail}</Text>
         </View>
     )
+    const handleBackButton = () => {
+        navigation.goBack();
+        return true;
+    }
     console.log(currentSlideIndex, "============================index==========================");
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar animated={true} barStyle="dark-content" backgroundColor="#fff" />
             {currentSlideIndex === 3 ? <></> :
-                <TouchableOpacity style={styles.txtOpacity} onPress={() => navigation.navigate("provdrPatnt")} activeOpacity={0.85} >
+                <TouchableOpacity style={styles.skipTxtOpacity} onPress={() => navigation.navigate("provdrPatnt")} activeOpacity={0.85} >
                     <Text style={styles.skipTxt}>Skip</Text>
                 </TouchableOpacity>}
             <FlatList
@@ -78,12 +86,22 @@ const SliderScreen = () => {
                 showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}
                 bounces={false}
-                scrollEnabled={false}
+                scrollEnabled={true}
                 keyExtractor={(item) => item.id}
                 initialScrollIndex={0}
-                onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollx } } }], {
-                    useNativeDriver: false,
-                })}
+                // onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollx } } }], {
+                //     useNativeDriver: false,
+                // })}
+                onScroll={e => {
+                    if (e.nativeEvent.contentOffset.x > 0 && currentSlideIndex > e.nativeEvent.contentOffset.x) {
+                        setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
+                        slidesRef2.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
+                    } else {
+                        setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
+                        slidesRef2.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
+                    }
+                }
+                }
                 onViewableItemsChanged={viewableItemsChanged1}
                 viewabilityConfig={viewconfig1}
             />
@@ -113,12 +131,19 @@ const SliderScreen = () => {
                         horizontal={true}
                         pagingEnabled={true}
                         bounces={false}
-                        scrollEnabled={false}
+                        scrollEnabled={true}
                         showsHorizontalScrollIndicator={false}
                         initialScrollIndex={0}
-                        onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollx } } }], {
-                            useNativeDriver: false,
-                        })}
+                        onScroll={e => {
+                            if (e.nativeEvent.contentOffset.x > 0 && currentSlideIndex > e.nativeEvent.contentOffset.x) {
+                                setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
+                                slidesRef1.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
+                            } else {
+                                setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
+                                slidesRef1.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
+                            }
+                        }
+                        }
                         viewabilityConfig={viewconfig1}
                         onViewableItemsChanged={viewableItemsChanged1}
                     />

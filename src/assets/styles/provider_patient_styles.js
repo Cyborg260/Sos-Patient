@@ -1,29 +1,33 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { FONT_FAMILY } from "../../constants";
+const { width, height } = Dimensions.get('screen')
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff"
     },
+    backGrdImg: {
+        flex: 1,
+        resizeMode: "cover",
+    },
     logoImg: {
-        // width: "38%",
-        // height: "12%",
-        width:152,
-        height:80,
+        width: 152,
+        height: 80,
         position: "absolute",
         resizeMode: "contain",
         backgroundColor: "#fff",
         top: 68,
         alignSelf: "center"
-        // left: 131
     },
     txt: {
         fontSize: 20,
         color: "#000000",
         fontFamily: FONT_FAMILY.MontserratMedium,
-        textAlign: "center",
-        marginTop: 170,
+        alignSelf: "center",
+        position: "absolute",
+        top: 170
+
     },
 
     //============= Left Dots ===============//
@@ -133,7 +137,7 @@ export default StyleSheet.create({
         backgroundColor: "#fff",
         alignSelf: "center",
         position: "absolute",
-        top: 420,
+        top: 435,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 60,

@@ -37,6 +37,10 @@ export default StyleSheet.create({
         zIndex: 1,
         backgroundColor: "red"
     },
+    items2Styles: {
+        justifyContent: "center",
+        marginTop: 60,
+    },
     MainTxt: {
         fontSize: 28,
         color: "#fff",
@@ -45,27 +49,13 @@ export default StyleSheet.create({
         textAlign: "center"
     },
     detailTxt: {
-        color: "#FEFEFE",
         fontSize: 17,
+        color: "#FEFEFE",
         fontWeight: "400",
         fontFamily: FONT_FAMILY.MontserratMedium,
         textAlign: "center",
-        marginTop: 15
-    },
-    items2Styles: {
-        justifyContent: "center",
-        marginTop: 70,
-    },
-    skipTxt: {
-        color: "#fff",
-        fontSize: 20,
-        fontFamily: FONT_FAMILY.MontserratMedium,
-    },
-    txtOpacity: {
-        alignSelf: "center",
-        position: "absolute",
-        zIndex: 1,
-        bottom: 35
+        marginTop: 15,
+        width: width
     },
     footerView1: {
         height: 20,
@@ -99,9 +89,20 @@ export default StyleSheet.create({
     },
     loaderView: {
         position: "absolute",
-        top: 275,
+        bottom:60,
         height: 80,
         alignSelf: "center",
         // backgroundColor: "red"
-    }
+    },
+    skipTxtOpacity: {
+        alignSelf: "center",
+        position: "absolute",
+        zIndex: 1,
+        bottom: 30
+    },
+    skipTxt: {
+        color: "#fff",
+        fontSize: 20,
+        fontFamily: FONT_FAMILY.MontserratMedium,
+    },
 })

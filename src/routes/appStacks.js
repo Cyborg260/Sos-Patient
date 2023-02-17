@@ -52,7 +52,7 @@ const AppStacks = () => {
                         open: config,
                         close: closeconfig,
                     },
-                    // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
                 }}
             />
             <Stack.Screen name='provdrPatnt' component={Provider_patient}

@@ -1,16 +1,42 @@
-import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, Alert } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, Alert, BackHandler } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import styles from '../assets/styles/provider_patient_styles'
 import ProPatBox from '../components/proPatBox'
 import { useDispatch, useSelector } from 'react-redux'
 import { showbutton } from '../redux/action'
 
 const Provider_patient = () => {
-  //useState
+  //================== useEffect =====================//
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handleBackButton)
+  }, [])
   const dispatch = useDispatch();
   const visible = useSelector((state) => state.visible)
   const Img = require("../assets/images/BlueDot.png")
-
+  const handleBackButton = () => {
+    BackHandler.exitApp()
+    // Alert.alert(
+    //   'Exit App',
+    //   'Exiting the application?',
+    //   [
+    //     {
+    //       text: 'Cancel',
+    //       onPress: () => {
+    //         console.log("Cancel Pressed");
+    //       },
+    //       style: 'cancel'
+    //     },
+    //     {
+    //       text: 'Ok',
+    //       onPress: () => BackHandler.exitApp(),
+    //     },
+    //   ],
+    //   {
+    //     cancelable: false
+    //   },
+    // );
+    return true;
+  }
   return (
     <SafeAreaView style={styles.container}>
       {/* Left Dots */}
