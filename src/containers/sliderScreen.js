@@ -8,6 +8,7 @@ import GetStartedBtn from '../components/getStartedBtn'
 const SliderScreen = () => {
     //============== useState ==============//
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+    const [scrollingRightSideAmount, setScrollingRightSideAmount] = useState(0);
     const [show, setShow] = useState(false)
     //============== useEffect =============//
     useEffect(() => {
@@ -86,22 +87,17 @@ const SliderScreen = () => {
                 showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}
                 bounces={false}
-                scrollEnabled={true}
+                scrollEnabled={false}
                 keyExtractor={(item) => item.id}
                 initialScrollIndex={0}
-                // onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollx } } }], {
-                //     useNativeDriver: false,
-                // })}
-                onScroll={e => {
-                    if (e.nativeEvent.contentOffset.x > 0 && currentSlideIndex > e.nativeEvent.contentOffset.x) {
-                        setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
-                        slidesRef2.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
-                    } else {
-                        setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
-                        slidesRef2.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
-                    }
-                }
-                }
+                onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollx } } }], {
+                    useNativeDriver: false,
+                },
+                )}
+                //  onScroll={e => {
+                //       setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
+                //       slidesRef2.current.scrollToOffset({offset:e.nativeEvent.contentOffset.x,animated:true});
+                //   }}
                 onViewableItemsChanged={viewableItemsChanged1}
                 viewabilityConfig={viewconfig1}
             />
@@ -131,19 +127,9 @@ const SliderScreen = () => {
                         horizontal={true}
                         pagingEnabled={true}
                         bounces={false}
-                        scrollEnabled={true}
+                        scrollEnabled={false}
                         showsHorizontalScrollIndicator={false}
                         initialScrollIndex={0}
-                        onScroll={e => {
-                            if (e.nativeEvent.contentOffset.x > 0 && currentSlideIndex > e.nativeEvent.contentOffset.x) {
-                                setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
-                                slidesRef1.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
-                            } else {
-                                setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
-                                slidesRef1.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
-                            }
-                        }
-                        }
                         viewabilityConfig={viewconfig1}
                         onViewableItemsChanged={viewableItemsChanged1}
                     />

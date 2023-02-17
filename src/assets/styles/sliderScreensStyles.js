@@ -15,7 +15,7 @@ export default StyleSheet.create({
     },
     docImg: {
         width: 196,
-        height: 336,
+        height: 350,
         resizeMode: "contain",
         alignSelf: "center",
         position: "absolute",
@@ -39,22 +39,22 @@ export default StyleSheet.create({
     },
     items2Styles: {
         justifyContent: "center",
-        marginTop: 60,
+        marginTop: 80,
     },
     MainTxt: {
-        fontSize: 28,
+        fontSize: 24,
         color: "#fff",
         fontFamily: FONT_FAMILY.MontserratBold,
         width: width,
         textAlign: "center"
     },
     detailTxt: {
-        fontSize: 17,
+        fontSize: 14,
         color: "#FEFEFE",
         fontWeight: "400",
         fontFamily: FONT_FAMILY.MontserratMedium,
         textAlign: "center",
-        marginTop: 15,
+        marginTop: 25,
         width: width
     },
     footerView1: {
@@ -89,7 +89,7 @@ export default StyleSheet.create({
     },
     loaderView: {
         position: "absolute",
-        bottom:60,
+        bottom: 60,
         height: 80,
         alignSelf: "center",
         // backgroundColor: "red"
