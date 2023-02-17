@@ -10,7 +10,7 @@ export const sliderData = [
         id: 1,
         dotsImage: require("../../assets/images/GroupDot.png"),
         docImage: require("../../assets/images/dr2.png"),
-        txt: "Health checks & consultations easily\n anywhere anytime",
+        txt: "Health checks &\n consultations easily\n anywhere anytime",
         detail: "Now you can get consultancy to your best\n consultant easily at your home within your\n suitable time."
     },
     {
@@ -24,7 +24,7 @@ export const sliderData = [
         id: 3,
         dotsImage: require("../../assets/images/GroupDot.png"),
         docImage: require("../../assets/images/dr2.png"),
-        txt: "Thousand of\ndoctors & experts\nto help your health!",
+        txt: "Thousand of doctors &\n experts to help your\n health!",
         detail: "You will get the most accurate information\n about any diseases from top-class doctors"
     },
 ]
