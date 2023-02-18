@@ -16,7 +16,7 @@ export default StyleSheet.create({
     // },
     docImg: {
         width: "90%",
-        height: 356,
+        height: 357,
         resizeMode: "contain",
         alignSelf: "center",
         marginTop: "7%",
