@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 import { FONT_FAMILY } from "../../constants";
+import { Colors } from "../../utils/Colors";
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: Colors.white,
     },
     // docImgView: {
     //     // // width: "98%",
@@ -27,11 +28,11 @@ export default StyleSheet.create({
         alignSelf: "center",
         position: "absolute",
         top: 470,
-        fontFamily: FONT_FAMILY.MontserratExtraBold
+        fontFamily: FONT_FAMILY.extraBold
     },
 
     instTxt: {
-        color: "#000000",
+        color: Colors.black,
         alignSelf: "center",
         fontSize: 14,
         position: "absolute",

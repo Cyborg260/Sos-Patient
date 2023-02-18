@@ -34,51 +34,35 @@ const forFade = ({ current }) => ({
     },
 });
 
+export const ScreenNames = {
+    SplashScreen: 'splashScreen',
+    SelectionScreen: 'provdrPatnt',
+    GuideScreen: 'slider',
+}
+
 const AppStacks = () => {
+
+    const options = {
+        headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
+        transitionSpec: {
+            open: config,
+            close: closeconfig,
+        },
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+    }
+    
+    const screenOptions = {
+        gestureEnabled: true,
+        cardStyleInterpolator: CardStyleInterpolators.forNoAnimation
+    }
+
     return (
-        <Stack.Navigator
-            initialRouteName='splashScreen'
-            sceeenOptions={{
-                gestureEnabled: true,
-                cardStyleInterpolator: CardStyleInterpolators.forNoAnimation
-            }}
-        >
-            <Stack.Screen name='splashScreen' component={SplashScreen}
-                options={{
-                    headerShown: false,
-                    gestureEnabled: true,
-                    gestureDirection: "horizontal",
-                    transitionSpec: {
-                        open: config,
-                        close: closeconfig,
-                    },
-                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
-                }}
-            />
-            <Stack.Screen name='provdrPatnt' component={Provider_patient}
-                options={{
-                    headerShown: false,
-                    gestureEnabled: true,
-                    gestureDirection: "horizontal",
-                    transitionSpec: {
-                        open: config,
-                        close: closeconfig,
-                    },
-                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
-                }}
-            />
-            <Stack.Screen name='slider' component={SliderScreen}
-                options={{
-                    headerShown: false,
-                    gestureEnabled: true,
-                    gestureDirection: "horizontal",
-                    transitionSpec: {
-                        open: config,
-                        close: closeconfig,
-                    },
-                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
-                }}
-            />
+        <Stack.Navigator  initialRouteName='splashScreen' sceeenOptions={screenOptions} >
+            <Stack.Screen name='splashScreen' component={SplashScreen} options={options} />
+            <Stack.Screen name='provdrPatnt' component={Provider_patient} options={options}  />
+            <Stack.Screen name='slider' component={SliderScreen}  options={options} />
         </Stack.Navigator>
     )
 }

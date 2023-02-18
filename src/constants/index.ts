@@ -3,7 +3,7 @@ export const FONT_FAMILY = {
     MontserratBlackItalic: 'Montserrat-BlackItalic',
     MontserratBold: 'Montserrat-Bold',
     MontserratBoldItalic: 'Montserrat-BoldItalic',
-    MontserratExtraBold: 'Montserrat-ExtraBold',
+    extraBold: 'Montserrat-ExtraBold',
     MontserratExtraBoldItalic: 'Montserrat-ExtraBoldItalic',
     MontserratExtraLight: 'Montserrat-ExtraLight',
     MontserratExtraLightItalic: 'Montserrat-ExtraLightItalic',
