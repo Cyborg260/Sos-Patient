@@ -1,20 +1,18 @@
 import {
-  View,
   Text,
-  TouchableOpacity,
   Image,
-  StyleSheet,
   StatusBar,
   SafeAreaView,
+  ImageBackground,
 } from 'react-native';
 import React, {useEffect} from 'react';
 import styles from '../assets/styles/splashScreen_styles';
 import {useNavigation} from '@react-navigation/native';
-import { images } from '../utils/Images';
-import { ScreenNames } from '../routes/appStacks';
+import {images} from '../utils/Images';
+import {ScreenNames} from '../routes/appStacks';
+import {Colors} from '../utils/Colors';
 
 const SplashScreen = () => {
-  const navigation = useNavigation();
   //====================== useEffect ===========================//
   useEffect(() => {
     setTimeout(() => {
@@ -24,6 +22,7 @@ const SplashScreen = () => {
       });
     }, 2500);
   }, []);
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView
@@ -33,23 +32,20 @@ const SplashScreen = () => {
       <StatusBar
         animated={true}
         barStyle="dark-content"
-        backgroundColor="#fff"
+        backgroundColor={Colors.white}
       />
-      {/* <View style={styles.docImgView}> */}
-      <Image
-        style={styles.docImg}
-        source={images.GroupDoc}
-      />
-      {/* </View> */}
-      <Text style={styles.appNameTxt}>
-        {' '}
-        Welcome to SOS{'\n'}Doctor House Call
-      </Text>
-      <Text style={styles.instTxt}>
-        {' '}
-        The best online doctor appointment &{'\n'}
-        consultation app of the century for your{'\n'} health and medical need!
-      </Text>
+      <ImageBackground style={styles.docImg} source={images.GroupDoc}>
+        <Text style={styles.appNameTxt}>
+          {' '}
+          Welcome to SOS{'\n'}Doctor House Call
+        </Text>
+        <Text style={styles.instTxt}>
+          {' '}
+          The best online doctor appointment &{'\n'}
+          consultation app of the century for your{'\n'} health and medical
+          need!
+        </Text>
+      </ImageBackground>
     </SafeAreaView>
   );
 };

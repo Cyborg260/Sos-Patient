@@ -7,7 +7,6 @@ import {
   FlatList,
   Animated,
   Dimensions,
-  ScrollView,
   StatusBar,
   BackHandler,
 } from 'react-native';
@@ -17,6 +16,8 @@ import {useNavigation} from '@react-navigation/native';
 import {sliderData} from '../utils/Data/sliderData';
 import NextBtn from '../components/nextBtn';
 import GetStartedBtn from '../components/getStartedBtn';
+import {ScreenNames} from '../routes/appStacks';
+import {Colors} from '../utils/Colors';
 
 const SliderScreen = () => {
   //============== useState ==============//
@@ -35,24 +36,12 @@ const SliderScreen = () => {
   const viewableItemsChanged1 = useRef(({viewableItems}) => {
     setCurrentSlideIndex(viewableItems[0].index);
   }).current;
-  // const viewableItemsChanged2 = useRef(({ viewableItems }) => {
-  //     setCurrentSlideIndex(viewableItems[0].index);
-  //     console.log(viewableItems[0].index, "=========viewableItems2==========");
-  // }).current
   const viewconfig1 = useRef({viewAreaCoveragePercentThreshold: 50}).current;
-  // const viewconfig2 = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
   const scrollToRight = () => {
     if (currentSlideIndex < sliderData.length - 1) {
       slidesRef1.current.scrollToIndex({index: currentSlideIndex + 1});
-    } else {
-      console.log('last Item');
-    }
-  };
-  const scrollToRightTxt = () => {
-    if (currentSlideIndex < sliderData.length - 1) {
       slidesRef2.current.scrollToIndex({index: currentSlideIndex + 1});
     } else {
-      console.log('last Item');
     }
   };
   const sliderItems = ({item}) => (
@@ -97,18 +86,8 @@ const SliderScreen = () => {
       <StatusBar
         animated={true}
         barStyle="dark-content"
-        backgroundColor="#fff"
+        backgroundColor={Colors.white}
       />
-      {currentSlideIndex === 3 ? (
-        <></>
-      ) : (
-        <TouchableOpacity
-          style={styles.skipTxtOpacity}
-          onPress={() => navigation.navigate('provdrPatnt')}
-          activeOpacity={0.85}>
-          <Text style={styles.skipTxt}>Skip</Text>
-        </TouchableOpacity>
-      )}
       <FlatList
         ref={slidesRef1}
         data={sliderData}
@@ -127,10 +106,6 @@ const SliderScreen = () => {
             useNativeDriver: false,
           },
         )}
-        // onScroll={e => {
-        //     setCurrentSlideIndex(e.nativeEvent.contentOffset.x)
-        //     slidesRef2.current.scrollToOffset({ offset: e.nativeEvent.contentOffset.x, animated: true });
-        // }}
         onViewableItemsChanged={viewableItemsChanged1}
         viewabilityConfig={viewconfig1}
       />
@@ -144,7 +119,7 @@ const SliderScreen = () => {
                 style={[
                   styles.sliderDots,
                   currentSlideIndex == index && {
-                    backgroundColor: '#2790BF',
+                    backgroundColor: Colors.blue,
                     width: 16,
                   },
                 ]}
@@ -174,12 +149,21 @@ const SliderScreen = () => {
             <GetStartedBtn />
           ) : (
             <NextBtn
-              scrollToTxt={scrollToRightTxt}
               scrollTo={scrollToRight}
               percentage={(currentSlideIndex + 1) * (100 / sliderData.length)}
             />
           )}
         </View>
+        {currentSlideIndex === 3 ? (
+          <></>
+        ) : (
+          <TouchableOpacity
+            style={styles.skipTxtOpacity}
+            onPress={() => navigation.navigate(ScreenNames.SelectionScreen)}
+            activeOpacity={0.85}>
+            <Text style={styles.skipTxt}>Skip</Text>
+          </TouchableOpacity>
+        )}
       </View>
     </SafeAreaView>
   );

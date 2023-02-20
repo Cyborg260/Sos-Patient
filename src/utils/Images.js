@@ -1,7 +1,15 @@
 export const images = {
-  GroupDoc: require('../assets/images/GroupDoc.png')
-}
-
-
-
-
+  GroupDoc: require('../assets/images/SplashBAckGround5.png'),
+  ArrowRight: require('../assets/images/VectorArrowRight.png'),
+  DoneIcon: require('../assets/images/doneIcon.png'),
+  GroupDots: require('../assets/images/GroupDot.png'),
+  Nurse1: require('../assets/images/nur1.png'),
+  Doc1: require('../assets/images/dr2.png'),
+  Nurse2: require('../assets/images/nur2.png'),
+  Doc2: require('../assets/images/dr2.png'),
+  Img: require('../assets/images/BlueDot.png'),
+  PatientImg: require('../assets/images/patient.png'),
+  ProviderImg: require('../assets/images/Provider.png'),
+  SosLogo: require('../assets/images/sosLogo.png'),
+  selScreenBackGround: require('../assets/images/DotedBackGround3.png'),
+};
