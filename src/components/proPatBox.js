@@ -1,6 +1,5 @@
 import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import {FONT_FAMILY} from '../constants';
 import {useDispatch, useSelector} from 'react-redux';
 import {showbutton} from '../redux/action';
 import {images} from '../utils/Images';

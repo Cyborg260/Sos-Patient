@@ -1,10 +1,4 @@
-import {
-  Text,
-  Image,
-  StatusBar,
-  SafeAreaView,
-  ImageBackground,
-} from 'react-native';
+import {Text, StatusBar, SafeAreaView, ImageBackground} from 'react-native';
 import React, {useEffect} from 'react';
 import styles from '../assets/styles/splashScreen_styles';
 import {useNavigation} from '@react-navigation/native';

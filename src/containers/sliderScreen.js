@@ -52,7 +52,7 @@ const SliderScreen = () => {
       id={item.id}
     />
   );
-  const Items = ({dotsImage, docImage, txt, index, id}) => (
+  const Items = ({dotsImage, docImage, index}) => (
     <View key={index} style={{width: width, height: height}}>
       <Image style={styles.allDotsImg} source={dotsImage} />
       <Image style={styles.docImg} source={docImage} />
@@ -67,7 +67,7 @@ const SliderScreen = () => {
       detail={item.detail}
     />
   );
-  const Items2 = ({txt, index, id, detail}) => (
+  const Items2 = ({txt, index, detail}) => (
     <View key={index} style={[styles.items2Styles, {width: width}]}>
       <Text style={styles.MainTxt}>{txt}</Text>
       <Text style={styles.detailTxt}>{detail}</Text>
